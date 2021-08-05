@@ -1,5 +1,5 @@
 /**
- *    Copyright 2010-2017 the original author or authors.
+ *    Copyright 2010-2021 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -17,15 +17,17 @@ package org.mybatis.jpetstore.web.actions;
 
 import java.util.List;
 
-import net.sourceforge.stripes.action.DefaultHandler;
-import net.sourceforge.stripes.action.ForwardResolution;
-import net.sourceforge.stripes.action.SessionScope;
-import net.sourceforge.stripes.integration.spring.SpringBean;
-
 import org.mybatis.jpetstore.domain.Category;
 import org.mybatis.jpetstore.domain.Item;
 import org.mybatis.jpetstore.domain.Product;
 import org.mybatis.jpetstore.service.CatalogService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import net.sourceforge.stripes.action.DefaultHandler;
+import net.sourceforge.stripes.action.ForwardResolution;
+import net.sourceforge.stripes.action.SessionScope;
+import net.sourceforge.stripes.integration.spring.SpringBean;
 
 /**
  * The Class CatalogActionBean.
@@ -34,6 +36,10 @@ import org.mybatis.jpetstore.service.CatalogService;
  */
 @SessionScope
 public class CatalogActionBean extends AbstractActionBean {
+
+  //	private Logger log = Logger.getLogger(CatalogService.class);
+
+  Logger logger = LoggerFactory.getLogger(CatalogActionBean.class);
 
   private static final long serialVersionUID = 5849523372175050635L;
 
@@ -142,6 +148,12 @@ public class CatalogActionBean extends AbstractActionBean {
 
   @DefaultHandler
   public ForwardResolution viewMain() {
+
+    logger.debug("@@@@@ debug 나오나요!");
+    logger.info("@@@@@ info 나오나요!");
+    logger.warn("@@@@@ warn 나오나요!");
+    logger.error("@@@@@ error 나오나요!");
+
     return new ForwardResolution(MAIN);
   }
 
